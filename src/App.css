@@ -1,0 +1,57 @@
+
+/* Scene */
+.scene {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: bisque;
+}
+
+/* TOP BAR ONLY */
+.top-bar {
+  width: 70%;
+  margin: 20px auto 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 20px;
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 0.8rem;
+}
+
+/* Sections */
+.top-bar .left,
+.top-bar .center,
+.top-bar .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Center grows naturally */
+.top-bar .center {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Icons */
+.top-bar .right span {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.top-bar .right span:hover {
+  opacity: 1;
+}
+
+/* Accent */
+.accent {
+  color: #a234fd;
+}

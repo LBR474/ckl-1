@@ -1,0 +1,536 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* =========================
+   DESIGN SYSTEM (GLOBAL)
+   ========================= */
+
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  --bg: #000;
+  --text: #fefdff;
+  --accent: #a234fd;
+
+  --topbar-bg: rgba(0, 0, 0, 1);
+  --top-bar-height: 45px;
+}
+
+/* =========================
+   GLOBAL RESET / BASE
+   ========================= */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  min-height: 100vh;
+
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.45;
+
+  background: var(--bg);
+  color: var(--text);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   STAGE CONTAINER
+   ========================= */
+
+.scene {
+  width: 100%;
+  min-height: 100vh;
+
+  
+  /* background-image: url("/src/assets/CKL_main_background_1.png");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat; */
+}
+.top-bar,
+.second-top-bar,
+.main-content,
+.bottomDiv {
+  position: relative;
+  z-index: 2;
+}
+
+.top-bar,
+.second-top-bar,
+.main-content,
+.bottomDiv {
+  width: min(90%, 1100px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.r3f-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 0;
+  background: rgba(162, 52, 253, 0.5); /* accent with transparency */
+}
+
+.r3f-layer canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  background-color: rgb(0, 0, 0);
+}
+
+/* .r3f-layer canvas {
+  filter: blur(40px);
+  opacity: 0.6;
+} */
+
+/* =========================
+   TOP BAR
+   ========================= */
+
+.top-bar {
+  width: 60%;
+  height: var(--top-bar-height);
+  margin: 20px auto 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0 0 12px; /* top right bottom left */
+
+  box-sizing: border-box;
+
+  background: transparent;
+  font-size: 0.8rem;
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 5px;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 38px; /* spacing between the 3 groups */
+}
+
+/* phone icon */
+.phone-icon svg {
+  font-size: 18px;
+  color: var(--accent);
+}
+
+.call-group {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 👈 tight spacing */
+}
+
+/* social icons group */
+.social-icons {
+  display: flex;
+  gap: 14px; /* spacing BETWEEN icons */
+  margin-left: 24px; /* 👈 controlled separation */
+}
+
+.social-icons svg {
+  font-size: 18px;
+  color: var(--accent);
+}
+
+/* layout groups */
+.top-bar .left,
+.top-bar .center,
+.top-bar .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-bar .center {
+  flex: 1;
+  justify-content: center;
+}
+
+/* icons */
+.top-bar .right span {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.top-bar .right span:hover {
+  opacity: 1;
+}
+
+/* accent text */
+.accent {
+  color: var(--accent);
+}
+
+.second-top-bar {
+  width: 60%; /* match top-bar */
+  margin: 10px auto 0 auto; /* small gap below top-bar */
+
+  height: calc(
+    var(--top-bar-height) * 2.8
+  ); /* taller than top-bar for visual interest */
+
+  background: rgba(162, 52, 253, 0.2); /* accent with transparency */
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 👈 key */
+  padding: 0 20px;
+  padding-right: 50px;
+
+  box-sizing: border-box;
+}
+
+.company-logo {
+  padding-left: 10px;
+  height: 50%;
+
+  width: 23%;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 37px; /* spacing between items */
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  align-items: center;
+}
+
+.main-nav a {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+
+  color: white;
+  text-decoration: none;
+
+  transition: opacity 0.2s ease;
+}
+
+.main-nav a:hover {
+  opacity: 0.7;
+}
+
+.has-dropdown a {
+  position: relative;
+  padding-right: 14px; /* space for triangle */
+}
+
+/* triangle */
+.has-dropdown a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-30%); /* tweak vertical alignment */
+
+  width: 0;
+  height: 0;
+
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid white; /* triangle color */
+}
+
+/* =========================
+   MAIN CONTENT (FOREGROUND STAGE)
+========================= */
+
+.main-content {
+  width: 70%; /* or 70% if you want consistency */
+  margin: 20px auto 0 auto; /* 👈 THIS is the key centering method */
+  
+  min-height: 60vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: var(--font-sans);
+  color: var(--text);
+
+  position: relative;
+  z-index: 1;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+}
+.MC-top-left-corner {
+  position: absolute;
+
+  top: clamp(20px, 4vw, 60px);
+  left: clamp(20px, 4vw, 60px);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.MC-top-left-corner img {
+  height: 4.5rem; /* responsive instead of % */
+  width: auto;
+}
+
+.MC-bottom-left-corner {
+  position: absolute;
+  height: 65%;
+  width: 50%;
+
+  bottom: clamp(20px, 4vw, 60px);
+  left: clamp(20px, 4vw, 60px);
+
+  display: flex;
+  flex-direction: column; /* important for heading layout */
+  justify-content: flex-start; /* vertical alignment → top */
+  align-items: flex-start; /* horizontal alignment → left */
+
+  font-size: clamp(28px, 5vw, 64px);
+  color: var(--accent);
+}
+.MC-bottom-left-corner h1 {
+  padding-top: 12px;
+  margin: 0;
+  font-size: 64px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.MC-bottom-left-corner h2 {
+  padding-top: 38px;
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.MC-bottom-left-corner h3 {
+  padding-top: 38px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: #ffffffb3;
+}
+
+.MC-bottom-right-corner {
+  position: absolute;
+  height: 65%;
+  width: 42%;
+
+  bottom: clamp(20px, 4vw, 60px);
+  right: clamp(20px, 4vw, 60px);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.image-row {
+  display: flex;
+  gap: 7px;
+
+  transform: translate(11px, -15px); /* 👈 left + up */
+}
+
+.decorative-element {
+  height: 3.5rem; /* tweak this */
+  width: auto;
+
+  object-fit: contain;
+}
+.bottomDiv {
+  position: absolute;
+
+  bottom: clamp(20px, 4vw, 60px); /* 👈 anchor to bottom */
+  left: 50%;
+  transform: translateX(-50%); /* 👈 true centering */
+
+  width: 70%;
+
+  display: flex;
+  justify-content: flex-end; /* push stat to right */
+
+  
+}
+
+.MC-stat-bottom-right {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+
+  align-items: flex-end;   /* 👈 right align everything */
+  justify-content: flex-end;
+
+  text-align: right;
+
+  gap: 6px;
+
+  max-width: 240px;
+
+  transform: translate(-20px, 55px); /* your nudge */
+
+  
+}
+.MC-stat-bottom-right h1,
+.MC-stat-bottom-right h3,
+.MC-stat-bottom-right h5 {
+  margin: 0;
+}
+
+.MC-stat-bottom-right h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.MC-stat-bottom-right h3 {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.MC-stat-bottom-right h5 {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.7;
+}
+
+.stats-people {
+  display: flex;
+  justify-content: flex-end; /* 👈 aligns with text */
+}
+
+.people-image {
+  height: 60px;  /* tweak visually */
+  width: auto;
+}
+
+.hamburger {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 28px;
+  height: 20px;
+
+  display: none; /* 👈 hidden on desktop */
+
+  flex-direction: column;
+  justify-content: space-between;
+
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+
+  background: var(--text);
+  border-radius: 2px;
+}
+
+@media (max-width: 1100px) {
+
+  .top-bar,
+  .second-top-bar {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 1100px) {
+
+  .MC-top-left-corner {
+    position: relative;   /* 👈 stop absolute positioning */
+    top: auto;
+    left: auto;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center; /* 👈 centers image horizontally */
+
+    margin-top: clamp(40px, 10vw, 80px); /* 👈 nice spacing from top */
+  }
+
+  .MC-top-left-corner img {
+    height: 4.5rem;
+  }
+}
+
+
+@media (max-width: 1100px) {
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .MC-top-left-corner,
+  .MC-bottom-left-corner,
+  .MC-bottom-right-corner,
+  .bottomDiv {
+    position: relative !important;
+
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+
+    width: 100%;
+    transform: none;
+  }
+
+  .MC-bottom-left-corner,
+  .MC-bottom-right-corner {
+    align-items: center;
+    text-align: center;
+  }
+
+  .image-row {
+    justify-content: center;
+    transform: none;
+  }
+
+  .MC-stat-bottom-right {
+    align-items: center;
+    text-align: center;
+  }
+}
